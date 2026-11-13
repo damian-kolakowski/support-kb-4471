@@ -4,7 +4,7 @@ title: '#4471 · what it shows: three problems, one ticket'
 owner: support desk
 status: accepted
 reviewed: 2026-11-13
-signature: 'Damian Kołakowski'
+signature: 'v1.eyJzdWIiOiIzMTk2IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTQ1OTY0NDYsImV4cCI6MTc5NDY4Mjg0Nn0.H2emJFVjB5HwqTjAL6_GZUBBdsRQGRt8EKVaQBc0iM4'
 ---
 
 <script>

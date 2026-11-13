@@ -1,0 +1,55 @@
+---
+layout: runbook
+title: '#4471 · what it shows: three problems, one ticket'
+owner: support desk
+status: accepted
+reviewed: 2026-11-13
+signature: 'Damian Kołakowski'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+The [#4471 page](/kb/incidents/4471) says one issue, one fix queued. The reports say otherwise.
+Run the desk's own cause logic over everything merged into #4471 and three problems come out,
+each with its own ticket in the tracker repo:
+
+1. **The shared parser reads dates month first.** Tenants here write the day first, so a typed
+   date lands in the wrong month. This is the bug #4471 knows about, and most reports belong
+   to it. → [tracker ticket #1](https://github.com/damian-kolakowski/support-kb-4471/issues/1)
+2. **The booking-v3 form's date hint is wrong.** Under its date field it prints `MM/DD/YYYY`,
+   people type what the hint says, and the form reads it day first. Same symptom, different
+   bug and different fix: every affected report comes from the three booking-v3 tenants, through
+   the form. → [tracker ticket #2](https://github.com/damian-kolakowski/support-kb-4471/issues/2)
+3. **Some bookings move by one day, not one month.** The desk footnoted these while merging:
+   June-only shifts, a Lisbon and a Toronto reader seeing different days for one meeting, an
+   invite dated before its booking. That is time-zone or DST handling, and no date parser fix
+   will touch it. → [tracker ticket #3](https://github.com/damian-kolakowski/support-kb-4471/issues/3)
+
+<Callout>
+Not one issue. Three, merged under one subject, because
+[decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject alone and every date
+bug gets the same subject. The counts below are computed from the export at render time.
+</Callout>
+
+## The split, computed
+
+<CauseTable ticket={4471} />
+
+Intake's tag and the real cause disagree on dozens of reports, because intake guesses from
+the reporter's browser and the cause depends on the tenant's locale and form. That disagreement
+is why reading the table beats trusting the tags.
+
+## What to do with the queue
+
+- The queued parser fix closes ticket 1 only. Keep #4471's count honest: it covers the parser
+  reports alone, not everything merged into it.
+- Ticket 2 is a one-line form fix a tenant can see: the hint must match what the form reads.
+- Ticket 3 stays open until someone reproduces the one-day shift across time zones; its five
+  reports are listed in the ticket.
+- When a subject-only merge next eats a quiet bug, this page is the precedent for splitting.
+
+<RenderStamp {signature} />

@@ -47,11 +47,14 @@ each with its own ticket in the tracker repo:</p>
   <li><strong>The booking-v3 form's date hint is wrong.</strong> Under its date field it prints <code>MM/DD/YYYY</code>,
     people type what the hint says, and the form reads it day first. Same symptom, different bug and
     different fix: every affected report comes from the three booking-v3 tenants, through the form.
-    → <a href="https://github.com/damian-kolakowski/support-kb-4471/issues/2">tracker ticket #2</a></li>
+    Engineering will not fix it, because the booking-v3 form is retired.
+    → <a href="https://github.com/damian-kolakowski/support-kb-4471/issues/2">tracker ticket #2</a>, closed as won't fix</li>
   <li><strong>Some bookings move by one day, not one month.</strong> The desk footnoted these while merging:
     June-only shifts, a Lisbon and a Toronto reader seeing different days for one meeting, an invite dated
-    before its booking. That is time-zone or DST handling, and no date parser fix will touch it.
-    → <a href="https://github.com/damian-kolakowski/support-kb-4471/issues/3">tracker ticket #3</a></li>
+    before its booking. That is time-zone or DST handling, and no date parser fix will touch it. The
+    engineering update on #4471 decided the other two causes and says nothing about this one, so it is
+    still open.
+    → <a href="https://github.com/damian-kolakowski/support-kb-4471/issues/3">tracker ticket #3</a>, open</li>
 </ol>
 <div class="callout">
 Not one issue. Three, merged under one subject, because
@@ -79,13 +82,14 @@ alone and every date bug gets the same subject. The counts below are computed fr
 <p>Intake's tag and the real cause disagree on dozens of reports, because intake guesses from
 the reporter's browser and the cause depends on the tenant's locale and form. That disagreement
 is why reading the table beats trusting the tags.</p>
-<h2>What to do with the queue</h2>
+<h2>Where the three stand</h2>
 <ul>
-  <li>The queued parser fix closes ticket 1 only. Keep #4471's count honest: it covers the parser
-    reports alone, not everything merged into it.</li>
-  <li>Ticket 2 is a one-line form fix a tenant can see: the hint must match what the form reads.</li>
-  <li>Ticket 3 stays open until someone reproduces the one-day shift across time zones; its five
-    reports are listed in the ticket.</li>
+  <li>Ticket 1 is fixed. #4471's own fix closes this cause and nothing else: the count that fix earns is
+    374 reports, not 412.</li>
+  <li>Ticket 2 is closed as won't fix, because the form it describes is retired. The 33 reports under it
+    are answered, not fixed.</li>
+  <li>Ticket 3 is open. Neither outcome on #4471 touches a one-day shift, so its five reports wait for
+    someone to reproduce the shift across time zones; they are listed in the ticket.</li>
   <li>When a subject-only merge next eats a quiet bug, this page is the precedent for splitting.</li>
 </ul>
 <p class="stamp">desk ref <b>DR-3X2X-GWKE</b></p>

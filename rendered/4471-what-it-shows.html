@@ -43,7 +43,8 @@ each with its own ticket in the tracker repo:</p>
 <ol>
   <li><strong>The shared parser reads dates month first.</strong> Tenants here write the day first, so a typed
     date lands in the wrong month. This is the bug #4471 knows about, and most reports belong to it.
-    → <a href="https://github.com/damian-kolakowski/support-kb-4471/issues/1">tracker ticket #1</a></li>
+    Engineering fixed it: #4471 closed 05 October with <code>fix(dates): parse dd/mm for eu locales</code>.
+    → <a href="https://github.com/damian-kolakowski/support-kb-4471/issues/1">tracker ticket #1</a>, closed as fixed</li>
   <li><strong>The booking-v3 form's date hint is wrong.</strong> Under its date field it prints <code>MM/DD/YYYY</code>,
     people type what the hint says, and the form reads it day first. Same symptom, different bug and
     different fix: every affected report comes from the three booking-v3 tenants, through the form.
